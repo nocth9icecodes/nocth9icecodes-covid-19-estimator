@@ -5,7 +5,6 @@ const ReportedCase = document.querySelector('#data-reported-cases');
 const HospitalBeds = document.querySelector('#data-hospital-beds');
 const PeriodType = document.querySelector('#data-period-type');
 
-
 function submitData() {
   const population = popuLation.value;
   const timeToElapse = TimeToElapse.value;

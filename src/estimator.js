@@ -13,23 +13,23 @@ const covid19ImpactEstimator = (data) => {
   if (periodType === 'days') {
     // For Days
     const dSets = Math.floor(timeToElapse / 3);
-    iInfectionsByRequestedTime = impact * (2 ** dSets);
-    siInfectionsByRequestedTime = severeImpact * (2 ** dSets);
+    iInfectionsByRequestedTime = impact * 2 ** dSets;
+    siInfectionsByRequestedTime = severeImpact * 2 ** dSets;
   }
   if (periodType === 'weeks') {
     // Convert weeks to days
     const wDays = timeToElapse * 7;
     const wSets = Math.floor(wDays / 3);
-    iInfectionsByRequestedTime = impact * (2 ** wSets);
-    siInfectionsByRequestedTime = severeImpact * (2 ** wSets);
+    iInfectionsByRequestedTime = impact * 2 ** wSets;
+    siInfectionsByRequestedTime = severeImpact * 2 ** wSets;
   }
   if (periodType === 'months') {
     // Convert month to weeks
     let mDays = timeToElapse * 4;
     mDays *= 7;
     const mSets = Math.floor(mDays / 3);
-    iInfectionsByRequestedTime = impact * (2 ** mSets);
-    siInfectionsByRequestedTime = severeImpact * (2 ** mSets);
+    iInfectionsByRequestedTime = impact * 2 ** mSets;
+    siInfectionsByRequestedTime = severeImpact * 2 ** mSets;
   }
 
   // severeCasesByRequestedTime
@@ -48,15 +48,19 @@ const covid19ImpactEstimator = (data) => {
   const isCasesForICUByRequestedTime = 0.05 * siInfectionsByRequestedTime;
 
   // casesForVentilatorsByRequestedTime
-  const iCasesForVentilatorsByRequestedTime = Math.floor(0.02 * iInfectionsByRequestedTime);
-  const siCasesForVentilatorsByRequestedTime = Math.floor(0.02 * siInfectionsByRequestedTime);
+  const iCasesForVentilatorsByRequestedTime = Math.floor(
+    0.02 * iInfectionsByRequestedTime
+  );
+  const siCasesForVentilatorsByRequestedTime = Math.floor(
+    0.02 * siInfectionsByRequestedTime
+  );
 
   // dollarsInFlight
-  const iDollarsInFlight = Math.floor((iInfectionsByRequestedTime * avgDailyIncomeInUSD
-    * avgDailyIncomePopulation) / timeToElapse);
+  const iDollarsInFlight = Math.floor(
+    (iInfectionsByRequestedTime * avgDailyIncomeInUSD * avgDailyIncomePopulation) / timeToElapse
+  );
   const siDollarsInFlight = Math.floor((siInfectionsByRequestedTime * avgDailyIncomeInUSD
     * avgDailyIncomePopulation) / timeToElapse);
-
 
   return {
     data: {
