@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const covid19ImpactEstimator = (data) => {
   const {
     reportedCases, totalHospitalBeds, periodType, timeToElapse
@@ -17,7 +18,7 @@ const covid19ImpactEstimator = (data) => {
     siInfectionsByRequestedTime = severeImpact * 2 ** dSets;
   }
   if (periodType === 'weeks') {
-    // Convert weeks to days
+    // Convert-weeks-to-days
     const wDays = timeToElapse * 7;
     const wSets = Math.floor(wDays / 3);
     iInfectionsByRequestedTime = impact * 2 ** wSets;

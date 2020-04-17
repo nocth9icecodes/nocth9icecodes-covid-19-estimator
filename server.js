@@ -35,8 +35,6 @@ app.post('/api/v1/on-covid-19', (req, res) => {
 
   const estimator = {
     region: {
-      name: 'Africa',
-      avgAge: 19.7,
       avgDailyIncomeInUSD: 5,
       avgDailyIncomePopulation: 0.71
     },
@@ -46,9 +44,6 @@ app.post('/api/v1/on-covid-19', (req, res) => {
     totalHospitalBeds,
     periodType
   };
-
-  // eslint-disable-next-line
-  console.log(estimator)
 
   const calEstimator = covid19ImpactEstimator(estimator);
 

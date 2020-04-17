@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const formEstimate = document.querySelector('#form-estimate');
 const popuLation = document.querySelector('#data-population');
 const TimeToElapse = document.querySelector('#data-time-to-elapse');
